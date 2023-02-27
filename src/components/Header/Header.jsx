@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { useState, useEffect, useRef } from "react";
 
 import Slider from "@mui/material/Slider";
@@ -33,12 +33,11 @@ import {
 } from "react-bootstrap-icons";
 import styled, { css, keyframes } from "styled-components";
 
-var progBarRate = 3;  
+var progBarRate = 3;
 
-function MainHeader(props) { 
-
+function MainHeader(props) {
   const [sld_value, setSldValue] = useState(1);
-  
+
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       Pseudorandom mode will allow the system to decide which rule will be
@@ -101,154 +100,150 @@ function MainHeader(props) {
 
   return (
     <div>
-              <div style={{ textAlign: "center" }}>
-                <h1 style={{ fontWeight: "700" }} className="websnapse-title">
-                  WebSnapse
-                </h1>
-              </div>
+      <div style={{ textAlign: "center" }}>
+        <h1 style={{ fontWeight: "700" }} className="websnapse-title">
+          WebSnapse
+        </h1>
+      </div>
 
-              <Row>
-                <Col>
-                  <div>
-                    <Form>
-                      <Form.Group id="formGridCheckbox">
-                        <Row>
-                          <Col sm={8}>
-                            <div>
-                              <DropdownButton
-                                id="simu-mode"
-                                title={"Simulation Mode: " + props.mode}
-                                onSelect={handleSelect}
-                              >
-                                <Dropdown.Item
-                                  eventKey="GUIDED"
-                                  onClick={() => props.setIsRandom(false)}
-                                >
-                                  GUIDED
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                  eventKey="PSEUDORANDOM"
-                                  onClick={() => props.setIsRandom(true)}
-                                >
-                                  PSEUDORANDOM
-                                </Dropdown.Item>
-                              </DropdownButton>
-                            </div>
+      <Row>
+        <Col>
+          <div>
+            <Form>
+              <Form.Group id="formGridCheckbox">
+                <Row>
+                  <Col sm={8}>
+                    <div>
+                      <DropdownButton
+                        id="simu-mode"
+                        title={"Simulation Mode: " + props.mode}
+                        onSelect={handleSelect}
+                      >
+                        <Dropdown.Item
+                          eventKey="GUIDED"
+                          onClick={() => props.setIsRandom(false)}
+                        >
+                          GUIDED
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          eventKey="PSEUDORANDOM"
+                          onClick={() => props.setIsRandom(true)}
+                        >
+                          PSEUDORANDOM
+                        </Dropdown.Item>
+                      </DropdownButton>
+                    </div>
 
-                            {/* <Form.Check type="checkbox"
+                    {/* <Form.Check type="checkbox"
                               label="Pseudorandom Mode"
                               defaultChecked={isRandom}
                               onChange={() => {
                                 setIsRandom(!isRandom)
                               }} /> */}
-                          </Col>
-                          {/* Question Mark Tooltip for Simulation Mode */}
-                          <Col sm={8} style={{ textAlign: "left" }}>
-                            <OverlayTrigger
-                              placement="right"
-                              delay={{ show: 250, hide: 400 }}
-                              overlay={renderTooltip}
-                            >
-                              <QuestionCircle />
-                            </OverlayTrigger>
-                          </Col>
-                        </Row>
-                      </Form.Group>
-                    </Form>
-                    {props.time == 0 ? (
-                      <div></div>
-                    ) : (
-                      <div
-                        style={{
-                          backgroundColor: "#778beb",
-                          color: "white",
-                          borderRadius: "10px",
-                          padding: "0.5em",
-                        }}
-                      >
-                        <ClockFill color="white" size={30} />{" "}
-                        <strong>Time:</strong>{" "}
-                        {props.time == 0 ? "Start playing!" : props.time}
-                      </div>
-                    )}
-                  </div>
-                </Col>
-                {/* Simulation Controls */}
-                <Col>
-                  <div
-                    className="snapse-controls"
-                    style={{ textAlign: "center", marginBottom: "0.8em" }}
-                  >
-                    <Button variant="link" onClick={() => props.onBackward()}>
-                      <SkipBackwardFill />
-                    </Button>{" "}
-                    <div style={{ display: "inline-block" }}>
-                      <ProgressBar key={props.pBar} isPlaying={props.isPlaying} />
-                      <Button
-                        size="lg"
-                        className="snapse-controls-play"
-                        onClick={handlePlay}
-                      >
-                        {props.isPlaying ? <PauseFill /> : <PlayFill />}
-                      </Button>
-                    </div>{" "}
-                    <Button variant="link" onClick={() => props.onForward()}>
-                      <SkipForwardFill />
-                    </Button>{" "}
-                    <Button
-                      hidden={true}
-                      id="forwardBtn"
-                      variant="link"
-                      onClick={() => onNullForward()}
+                  </Col>
+                  {/* Question Mark Tooltip for Simulation Mode */}
+                  <Col sm={8} style={{ textAlign: "left" }}>
+                    <OverlayTrigger
+                      placement="right"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={renderTooltip}
                     >
-                      <SkipForwardFill />
-                    </Button>{" "}
-                  </div>
-                </Col>
+                      <QuestionCircle />
+                    </OverlayTrigger>
+                  </Col>
+                </Row>
+              </Form.Group>
+            </Form>
+            {props.time == 0 ? (
+              <div></div>
+            ) : (
+              <div
+                style={{
+                  backgroundColor: "#778beb",
+                  color: "white",
+                  borderRadius: "10px",
+                  padding: "0.5em",
+                }}
+              >
+                <ClockFill color="white" size={30} /> <strong>Time:</strong>{" "}
+                {props.time == 0 ? "Start playing!" : props.time}
+              </div>
+            )}
+          </div>
+        </Col>
+        {/* Simulation Controls */}
+        <Col>
+          <div
+            className="snapse-controls"
+            style={{ textAlign: "center", marginBottom: "0.8em" }}
+          >
+            <Button variant="link" onClick={() => props.onBackward()}>
+              <SkipBackwardFill />
+            </Button>{" "}
+            <div style={{ display: "inline-block" }}>
+              <ProgressBar key={props.pBar} isPlaying={props.isPlaying} />
+              <Button
+                size="lg"
+                className="snapse-controls-play"
+                onClick={handlePlay}
+              >
+                {props.isPlaying ? <PauseFill /> : <PlayFill />}
+              </Button>
+            </div>{" "}
+            <Button variant="link" onClick={() => props.onForward()}>
+              <SkipForwardFill />
+            </Button>{" "}
+            <Button
+              hidden={true}
+              id="forwardBtn"
+              variant="link"
+              onClick={() => onNullForward()}
+            >
+              <SkipForwardFill />
+            </Button>{" "}
+          </div>
+        </Col>
 
-                {/* Speed Slider */}
-                <Col style={{ textAlign: "right" }}>
-                  <div
-                    id="speed-slider"
-                    style={{
-                      backgroundColor: "#786fa6",
-                      borderRadius: "10px",
-                      padding: "0.5em",
-                    }}
-                  >
-                    <h6
-                      className="slider-title"
-                      style={{ textAlign: "center" }}
-                    >
-                      <Sliders /> Simulation Speed
-                      <Button
-                        size="sm"
-                        variant="light"
-                        style={{ float: "right" }}
-                        onClick={resetSlider}
-                      >
-                        Reset to 1x
-                      </Button>{" "}
-                    </h6>
+        {/* Speed Slider */}
+        <Col style={{ textAlign: "right" }}>
+          <div
+            id="speed-slider"
+            style={{
+              backgroundColor: "#786fa6",
+              borderRadius: "10px",
+              padding: "0.5em",
+            }}
+          >
+            <h6 className="slider-title" style={{ textAlign: "center" }}>
+              <Sliders /> Simulation Speed
+              <Button
+                size="sm"
+                variant="light"
+                style={{ float: "right" }}
+                onClick={resetSlider}
+              >
+                Reset to 1x
+              </Button>{" "}
+            </h6>
 
-                    <Slider
-                      aria-label="simuSpeed"
-                      color="secondary"
-                      min={0.1}
-                      max={3.0}
-                      step={0.1}
-                      defaultValue={1}
-                      value={sld_value}
-                      onChange={handleSldChange}
-                      valueLabelDisplay="auto"
-                      valueLabelFormat={sliderThumbLabelFormat}
-                    />
-                  </div>
-                </Col>
-              </Row>
+            <Slider
+              aria-label="simuSpeed"
+              color="secondary"
+              min={0.1}
+              max={3.0}
+              step={0.1}
+              defaultValue={1}
+              value={sld_value}
+              onChange={handleSldChange}
+              valueLabelDisplay="auto"
+              valueLabelFormat={sliderThumbLabelFormat}
+            />
+          </div>
+        </Col>
+      </Row>
 
-              {/* Controls for making SNP */}
-              {/* <Row>
+      {/* Controls for making SNP */}
+      {/* <Row>
                 <Col sm={8}>
                   <Button
                     variant="outline-dark"
@@ -328,8 +323,8 @@ function MainHeader(props) {
                   </Button>{" "}
                 </Col>
               </Row> */}
-            </div>
-  )
+    </div>
+  );
 }
 const shortening = keyframes`
 from {
@@ -356,4 +351,4 @@ const ProgressBar = styled.div`
 function sliderThumbLabelFormat(value) {
   return `${value}x`;
 }
-export default MainHeader
+export default MainHeader;

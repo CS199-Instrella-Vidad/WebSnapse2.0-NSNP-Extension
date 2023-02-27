@@ -1,29 +1,34 @@
-import { Button, Form, Modal } from 'react-bootstrap';
-import { useReducer, useState } from 'react';
+import { Button, Form, Modal } from "react-bootstrap";
+import { useReducer, useState } from "react";
 import { allRulesValid } from "../../utils/helpers";
 import shortid from "shortid";
 
 const formReducer = (state, event) => {
   if (event.reset) {
     return {
-      id:'',
-    }
+      id: "",
+    };
   }
   return {
     ...state,
-    [event.name]: event.value
-  }
-}
+    [event.name]: event.value,
+  };
+};
 
-const initialFormState = {id:""}; 
+const initialFormState = { id: "" };
 
-const NewOutputNodeForm = ({ showNewOutputModal, handleCloseNewOutputModal, handleNewOutput, handleError }) => {
+const NewOutputNodeForm = ({
+  showNewOutputModal,
+  handleCloseNewOutputModal,
+  handleNewOutput,
+  handleError,
+}) => {
   const handleClose = () => {
     handleCloseNewOutputModal();
   };
   const [formData, setFormData] = useReducer(formReducer, initialFormState);
   const [submitting, setSubmitting] = useState(false);
-  const handleChange = event => {
+  const handleChange = (event) => {
     console.log(event.target.value);
     console.log(event.target.name);
     setFormData({
@@ -34,23 +39,23 @@ const NewOutputNodeForm = ({ showNewOutputModal, handleCloseNewOutputModal, hand
   function handleSubmit(event) {
     event.preventDefault();
     let newId = `${formData.id}-${shortid.generate()}`;
-      handleClose();
-      setSubmitting(true);
+    handleClose();
+    setSubmitting(true);
 
-      setTimeout(() => {
-        setSubmitting(false);
-        setFormData({
-          reset: true
-        })
-      }, 3000);
-      const newOutput = {
-        id: newId,
-        position: { x: 300, y: 300 },
-        isOutput: true,
-        spikes: 0,
-        bitstring: ' '
-      }
-      handleNewOutput(newOutput);
+    setTimeout(() => {
+      setSubmitting(false);
+      setFormData({
+        reset: true,
+      });
+    }, 3000);
+    const newOutput = {
+      id: newId,
+      position: { x: 300, y: 300 },
+      isOutput: true,
+      spikes: 0,
+      bitstring: " ",
+    };
+    handleNewOutput(newOutput);
   }
 
   return (
@@ -60,19 +65,26 @@ const NewOutputNodeForm = ({ showNewOutputModal, handleCloseNewOutputModal, hand
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
-        <Form.Group>
+          <Form.Group>
             <Form.Label>Output Node Name</Form.Label>
-            <Form.Control  required name="id" type="text" placeholder="n0" value={formData.id} onChange={handleChange} />
+            <Form.Control
+              required
+              name="id"
+              type="text"
+              placeholder="n0"
+              value={formData.id}
+              onChange={handleChange}
+            />
           </Form.Group>
           <Button variant="secondary" onClick={handleClose}>
             Close
-            </Button> {' '}
+          </Button>{" "}
           <Button type="submit" variant="primary">
             Save Changes
-            </Button>
+          </Button>
         </Form>
       </Modal.Body>
     </Modal>
-  )
-}
+  );
+};
 export default NewOutputNodeForm;
