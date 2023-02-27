@@ -1,14 +1,22 @@
-The extended WebSnapse application can be accessed in **https://nccruel.github.io/websnapse_extended/#/**.
+# WebSnapse 2.0 Support for Numerical SNP Systems
+
+## The aim of this project is to extend the functionality of WebSnapse 2.0 by [nccruel](https://github.com/nccruel) and [colquirim](https://github.com/colquirim) by adding support for Numerical Spiking Neural P systems.
+
+\
+Their WebSnapse application can be accessed in **https://nccruel.github.io/websnapse_extended/#/**.
+
+---
 
 # Requirements
-- Install [node and npm](https://nodejs.org/en/download/). You may type `npm install` in the terminal to install _npm_.
+
+- Install [node and npm](https://nodejs.org/en/download/). You may type `npm install` in the terminal to install _npm_. Make sure to install Node version 16.
 - Install [yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable) (Use command: `npm install --global yarn`)
 - Install the libraries for the project by going to the directory where the
   project is then putting in the terminal `yarn install`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Running the Application
+# Running the Application
 
 In the project directory, you can run:
 
@@ -42,7 +50,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Troubleshooting
+# Troubleshooting
+
 - If the screen is completely blank, try clearing your local history in the web
   browser. This issue may be due to an XML file being formatted incorrectly yet
-  saved by the system. 
+  saved by the system.
