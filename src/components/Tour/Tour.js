@@ -441,7 +441,7 @@ const Tour = ({
       handleFalseRestartTutorial();
     } else if (index === 1 && action === ACTIONS.PREV) {
     } else if (index === 7) {
-    } else if (index === 19) {
+    } else if (index === 18) {
       handleShowSideBarMenu();
     } else if (index === 23) {
       handleCloseSideBarMenu();
