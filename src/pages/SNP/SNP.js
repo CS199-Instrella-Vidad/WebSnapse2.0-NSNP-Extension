@@ -1,17 +1,9 @@
 import "../../scss/custom.scss";
 import "./SNP.css";
-import { slide as Menu } from "react-burger-menu";
+
 import { useState, useEffect, useRef } from "react";
 import { useImmer } from "use-immer";
-import {
-  Button,
-  Container,
-  Alert,
-  Form,
-  Dropdown,
-  DropdownButton,
-} from "react-bootstrap";
-import { ClockHistory, Save2 } from "react-bootstrap-icons";
+import { Container, Alert } from "react-bootstrap";
 import Snapse from "../../components/Snapse/Snapse";
 import { step, backStep, parseRule, null_step } from "../../utils/automata";
 import ElementPopUp from "../../components/forms/ElementPopUp";
@@ -29,18 +21,13 @@ import DeleteSynapseForm from "../../components/forms/DeleteSynapseForm";
 
 import ChoiceHistory from "../../components/ChoiceHistory/ChoiceHistory";
 import convert from "xml-js";
-import { saveAs } from "file-saver";
+
 import useUnsavedChanges from "../../components/useUnsavedChanges/useUnsavedChanges";
 import MainHeader from "../../components/Header/Header";
 import ComputingControls from "../../components/Header/ComputingControls";
 import Tour from "../../components/Tour/Tour";
+import Menu from "../../components/Menu/Menu";
 
-var options = {
-  compact: true,
-  ignoreComment: true,
-  spaces: 4,
-  sanitize: false,
-};
 var isClickedSynapse = false;
 var isHover = true;
 var srcDel = "";
@@ -180,7 +167,6 @@ function SNP() {
   const [weight_main, setWeight] = useState(1);
   const [isPressedDel, setIsPressedDel] = useState(false);
   const [isRandom, setIsRandom] = useState(true);
-  const [fileName, setFileName] = useState("");
   const [Prompt, setDirty, setPristine] = useUnsavedChanges();
   // Modal Booleans
   const [showElementPopup, setShowElementPopup] = useState(false);
@@ -237,11 +223,6 @@ function SNP() {
 
   const [mode, setMode] = useState("PSEUDORANDOM");
 
-  const handleSelect = (e) => {
-    console.log(e);
-    setMode(e);
-  };
-
   // Menu Handles
   const handleShowDropdownBasic = () => setShowDropdownBasic(true);
   const handleCloseDropdownBasic = () => setShowDropdownBasic(false);
@@ -250,9 +231,6 @@ function SNP() {
   };
   const handleShowSideBarMenu = () => setShowSideBarMenu(true);
   const handleCloseSideBarMenu = () => setShowSideBarMenu(false);
-  const handleSideBarMenu = () => {
-    setShowSideBarMenu(showSideBarMenu ? false : true);
-  };
 
   const [restartTutorial, setRestartTutorial] = useState(false);
   const handleTrueRestartTutorial = () => setRestartTutorial(true);
@@ -276,93 +254,6 @@ function SNP() {
     setTimeout(() => {
       setError("");
     }, 3000);
-  };
-  const handleSave = () => {
-    //Convert JSON Array to string.
-    var wrapper = { content: neurons };
-    //console.log(neurons);
-    var result = convert.json2xml(wrapper, options);
-    //console.log(wrapper);
-    var blob = new Blob([result], { type: "text/xml;charset=utf-8" });
-    saveAs(blob, Date().toString() + "-Neurons.xmp");
-    setPristine();
-  };
-  const handleLoad = (input) => {
-    let file = input.files[0];
-    setHasEnded(false);
-
-    if (file.type && file.type.indexOf("text/xml") === -1) {
-      showError("File is not a xml file");
-      return;
-    }
-    const reader = new FileReader();
-    function nativeType(value) {
-      var nValue = Number(value);
-      if (!isNaN(nValue)) {
-        return nValue;
-      }
-      var bValue = value.toLowerCase();
-      if (bValue === "true") {
-        return true;
-      } else if (bValue === "false") {
-        return false;
-      }
-      return value;
-    }
-    var removeJsonTextAttribute = async function (value, parentElement) {
-      try {
-        const pOpKeys = Object.keys(parentElement._parent);
-        const keyNo = pOpKeys.length;
-        const keyName = pOpKeys[keyNo - 1];
-        const arrOfKey = parentElement._parent[keyName];
-        const arrOfKeyLen = arrOfKey.length;
-
-        if (arrOfKeyLen > 0) {
-          const arr = arrOfKey;
-          const arrIndex = arrOfKey.length - 1;
-          arr[arrIndex] = value;
-        } else if (keyName == "out") {
-          parentElement._parent[keyName] = [value];
-        } else if (keyName == "bitstring") {
-          parentElement._parent[keyName] = value;
-        } else {
-          parentElement._parent[keyName] = nativeType(value);
-        }
-      } catch (e) {}
-    };
-    reader.addEventListener("load", async (event) => {
-      var options = {
-        compact: true,
-        trim: true,
-        ignoreDeclaration: true,
-        ignoreInstruction: true,
-        ignoreAttributes: true,
-        ignoreComment: true,
-        ignoreCdata: true,
-        ignoreDoctype: true,
-        textFn: removeJsonTextAttribute,
-      };
-      var result = await convert.xml2js(event.target.result, options);
-      await setNeurons((draft) => (draft = result.content));
-      await setNeurons((draft) => {
-        for (var k in draft) {
-          if (draft[k].bitstring) {
-            // console.log("loaded string", draft[k].bitstring);
-            // draft[k].bitstring = " ";
-          }
-          if (!draft[k].isOutput && !draft[k].out) {
-            draft[k].out = [];
-          }
-        }
-      });
-      window.localStorage.setItem(
-        "originalNeurons",
-        JSON.stringify(result.content)
-      );
-      setFileName(file.name);
-    });
-    reader.readAsText(file);
-    setTime(0);
   };
 
   /// add weight argument
@@ -796,103 +687,33 @@ function SNP() {
 
   return (
     <>
-      {/* <Tour
+      <Tour
         handleShowDropdownBasic={handleShowDropdownBasic}
         handleCloseDropdownBasic={handleCloseDropdownBasic}
         handleShowSideBarMenu={handleShowSideBarMenu}
         handleCloseSideBarMenu={handleCloseSideBarMenu}
         restartTutorial={restartTutorial}
         handleFalseRestartTutorial={handleFalseRestartTutorial}
-      /> */}
+      />
       <Container>
         {error && <Alert variant="danger">{error}</Alert>}
 
         {/* Hamburger Side Menu */}
         <Menu
-          id="side-bar-menu"
-          isOpen={showSideBarMenu}
-          onClick={handleSideBarMenu}
-          disableCloseOnEsc
-          disableOverlayClick
-          noOverlay
-        >
-          <Form>
-            <Form.File
-              id="custom-file"
-              label={fileName ? fileName : "Load file..."}
-              custom
-              onChange={(e) => {
-                handleLoad(e.target);
-              }}
-            />
-          </Form>
-          <div>
-            <Button
-              id="save-btn"
-              variant="primary"
-              disabled={time > 0 ? true : false}
-              onClick={handleSave}
-            >
-              <Save2 /> Save
-            </Button>
-          </div>
-          <div>
-            <Button
-              id="choice-history-btn"
-              variant="primary"
-              onClick={handleShowChoiceHistoryModal}
-            >
-              <ClockHistory /> Choice History
-            </Button>
-          </div>
-          <div>
-            <DropdownButton id="file-dropdown" title="Download samples">
-              <Dropdown.Item href="./samples/ex1 - 3k+3 spiker.xmp" download>
-                Ex1 - 3k+3 Spiker
-              </Dropdown.Item>
-              <Dropdown.Item href="./samples/ex2 - bitadder.xmp" download>
-                Ex2 - Bitadder
-              </Dropdown.Item>
-              <Dropdown.Item
-                href="./samples/ex3 - increasing comparator.xmp"
-                download
-              >
-                Ex3 - Increasing Comparator
-              </Dropdown.Item>
-              <Dropdown.Item href="./samples/ex4 - naturally even.xmp" download>
-                Ex4 - Naturally Even
-              </Dropdown.Item>
-              <Dropdown.Item
-                href="./samples/ex5 - naturally greater one.xmp"
-                download
-              >
-                Ex5 - Naturally Greater Than One
-              </Dropdown.Item>
-            </DropdownButton>
-          </div>
-          <div>
-            <Button
-              id="restart-tour"
-              variant="primary"
-              onClick={handleTrueRestartTutorial}
-            >
-              Restart Tutorial
-            </Button>
-          </div>
-          <div>
-            <Form>
-              <Form.Check
-                type="checkbox"
-                label="Display details when hovering"
-                defaultChecked={isHover}
-                onChange={() => {
-                  isHover = !isHover;
-                }}
-              />
-            </Form>
-          </div>
-        </Menu>
-
+          showSideBarMenu={showSideBarMenu}
+          setShowSideBarMenu={setShowSideBarMenu}
+          hasEnded={hasEnded}
+          setHasEnded={setHasEnded}
+          showError={showError}
+          neurons={neurons}
+          setNeurons={setNeurons}
+          time={time}
+          setTime={setTime}
+          isHover={isHover}
+          setPristine={setPristine}
+          handleShowChoiceHistoryModal={handleShowChoiceHistoryModal}
+          handleTrueRestartTutorial={handleTrueRestartTutorial}
+        />
         {/* Main App Header */}
         <MainHeader
           setMode={setMode}
