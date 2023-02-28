@@ -398,8 +398,6 @@ const styles = {
 
 // Tour component
 const Tour = ({
-  handleShowDropdownBasic,
-  handleCloseDropdownBasic,
   handleShowSideBarMenu,
   handleCloseSideBarMenu,
   restartTutorial,
@@ -440,15 +438,12 @@ const Tour = ({
     } else if (index === 0) {
       handleCloseSideBarMenu();
     } else if (index === 1) {
-      handleShowDropdownBasic();
       handleFalseRestartTutorial();
     } else if (index === 1 && action === ACTIONS.PREV) {
-      handleCloseDropdownBasic();
     } else if (index === 7) {
-      handleCloseDropdownBasic();
-    } else if (index === 12) {
+    } else if (index === 19) {
       handleShowSideBarMenu();
-    } else if (index === 17) {
+    } else if (index === 23) {
       handleCloseSideBarMenu();
       setTourViewed();
     }

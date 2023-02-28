@@ -20,7 +20,6 @@ import DeleteAllForm from "../../components/forms/DeleteAllForm";
 import DeleteSynapseForm from "../../components/forms/DeleteSynapseForm";
 
 import ChoiceHistory from "../../components/ChoiceHistory/ChoiceHistory";
-import convert from "xml-js";
 
 import useUnsavedChanges from "../../components/useUnsavedChanges/useUnsavedChanges";
 import MainHeader from "../../components/Header/Header";
@@ -165,7 +164,6 @@ function SNP() {
   const [nodeSpikes, setNeuronSpikes] = useState("");
   const [nodeBitstring, setNeuronBitstring] = useState("");
   const [weight_main, setWeight] = useState(1);
-  const [isPressedDel, setIsPressedDel] = useState(false);
   const [isRandom, setIsRandom] = useState(true);
   const [Prompt, setDirty, setPristine] = useUnsavedChanges();
   // Modal Booleans
@@ -183,7 +181,6 @@ function SNP() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showDeleteSynapseModal, setShowDeleteSynapseModal] = useState(false);
   // Menu Booleans
-  const [showDropdownBasic, setShowDropdownBasic] = useState(false);
   const [showSideBarMenu, setShowSideBarMenu] = useState(false);
   // Simulation Booleans
   const [isPlaying, setIsPlaying] = useState(false);
@@ -224,11 +221,6 @@ function SNP() {
   const [mode, setMode] = useState("PSEUDORANDOM");
 
   // Menu Handles
-  const handleShowDropdownBasic = () => setShowDropdownBasic(true);
-  const handleCloseDropdownBasic = () => setShowDropdownBasic(false);
-  const handleDropDownBasic = () => {
-    setShowDropdownBasic(showDropdownBasic ? false : true);
-  };
   const handleShowSideBarMenu = () => setShowSideBarMenu(true);
   const handleCloseSideBarMenu = () => setShowSideBarMenu(false);
 
@@ -688,8 +680,6 @@ function SNP() {
   return (
     <>
       <Tour
-        handleShowDropdownBasic={handleShowDropdownBasic}
-        handleCloseDropdownBasic={handleCloseDropdownBasic}
         handleShowSideBarMenu={handleShowSideBarMenu}
         handleCloseSideBarMenu={handleCloseSideBarMenu}
         restartTutorial={restartTutorial}
