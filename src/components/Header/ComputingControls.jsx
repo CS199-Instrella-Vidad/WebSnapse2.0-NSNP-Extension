@@ -1,6 +1,15 @@
 import React from "react";
+import { Button, Row, Col } from "react-bootstrap";
+import {
+  ArrowCounterclockwise,
+  PlusSquare,
+  XCircle,
+  PencilSquare,
+  BoxArrowRight,
+  BoxArrowInRight,
+} from "react-bootstrap-icons";
 
-function ComputingControls([props]) {
+function ComputingControls(props) {
   return (
     <div>
       <Row>
@@ -10,7 +19,7 @@ function ComputingControls([props]) {
             size="md"
             id="new-node-btn"
             className="node-actions text-primary"
-            onClick={handleShow}
+            onClick={props.handleShow}
             style={{ textAlign: "center", marginRight: "0.3em" }}
             disabled={props.time > 0 ? true : false}
           >
@@ -21,7 +30,7 @@ function ComputingControls([props]) {
             size="md"
             id="new-input-btn"
             className="node-actions text-primary"
-            onClick={handleShowNewInputModal}
+            onClick={props.handleShowNewInputModal}
             style={{ textAlign: "center", marginRight: "0.3em" }}
             disabled={props.time > 0 ? true : false}
           >
@@ -32,7 +41,7 @@ function ComputingControls([props]) {
             size="md"
             id="new-output-btn"
             className="node-actions text-primary"
-            onClick={handleShowNewOutputModal}
+            onClick={props.handleShowNewOutputModal}
             style={{ textAlign: "center", marginRight: "0.3em" }}
             disabled={props.time > 0 ? true : false}
           >
@@ -43,7 +52,7 @@ function ComputingControls([props]) {
             size="md"
             id="del-node-btn"
             className="node-actions text-danger"
-            onClick={handleShowDeleteModal}
+            onClick={props.handleShowDeleteModal}
             style={{ textAlign: "center", marginRight: "0.3em" }}
             disabled={props.time > 0 ? true : false}
           >
@@ -54,7 +63,7 @@ function ComputingControls([props]) {
             size="md"
             id="edit-node-btn"
             className="node-actions text-success"
-            onClick={handleShowEditModal}
+            onClick={props.handleShowEditModal}
             style={{ textAlign: "center", marginRight: "0.3em" }}
             disabled={props.time > 0 ? true : false}
           >
@@ -66,7 +75,7 @@ function ComputingControls([props]) {
             size="md"
             id="edit-inp-node-btn"
             className="node-actions text-success"
-            onClick={handleShowEditInputModal}
+            onClick={props.handleShowEditInputModal}
             style={{ textAlign: "center", marginRight: "0.3em" }}
             disabled={props.time > 0 ? true : false}
           >
@@ -77,7 +86,7 @@ function ComputingControls([props]) {
           <Button
             id="res-btn"
             variant="danger"
-            onClick={handleReset}
+            onClick={props.handleReset}
             style={{ textAlign: "center", marginTop: "0.4em" }}
           >
             <ArrowCounterclockwise /> Restart Simulation
