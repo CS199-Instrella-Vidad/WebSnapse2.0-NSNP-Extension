@@ -1,114 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
-
-.websnapse-title{
-  color: #786fa6;
+.welcome{
+  width: 100%;
+  flex:100%;
+  height:100%;
+  text-align: center;
+  vertical-align:middle;
+  margin: auto;
+  color:var(--primary);
 }
-
-.slider-title{
-  color: #ffffff;
+#root{
+  width:100%;
+  display:contents;
 }
-
-.MuiSlider-thumb{
-  color: white;
+.greet{
+  height:25vh;
+  padding:1% 5% 5% 5%;
 }
-.MuiSlider-rail{
-  color:white;
+.LinkContainer{
+  width:100%;
+  display:flex;
+  padding:0 30% 0 30%;
+  margin:0;
+  height: 60vh;
 }
-.MuiSlider-track{
-  color:black;
+.divide{
+  width:50%;
 }
-
-.node-actions{
-  
+.divide-rside{
+  border-left:1px solid black;
 }
-
-.snapse-controls-play{
-  border-radius: 50%;
+.divide-lside img{
+  width:100%;
+  transition:transform 1s ease-in-out,opacity 1s ease-out;
+  opacity:0;
+  transform:translateX(+2vw);
 }
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 36px;
-  top: 20px;
+.divide-rside img{
+  width:100%;
+  transition:transform 1s ease-in-out,opacity 1s ease-out;
+  opacity:0;
+  transform:translateX(-2vw);
 }
-
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: #373a47;
+.divide-lside:hover img{
+  transform: translateX(0vw);
 }
-
-/* Color/shape of burger icon bars on hover*/
-.bm-burger-bars-hover {
-  background: #a90000;
+.divide-rside:hover img{
+  transform: translateX(0vw);
 }
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
+.divide-rside a, .divide-lside a{
+  transition:opacity 1s ease-out;
+  opacity: 0;
 }
-
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #bdc3c7;
+.divide-rside:hover  img, .divide-lside:hover  img {
+  opacity:1;
 }
-
-/*
-Sidebar wrapper styles
-Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
-*/
-.bm-menu-wrap {
-  position: fixed;
-  height: 100%;
+.divide-rside:hover a, .divide-lside:hover a{
+  opacity: 1;
 }
-
-/* General sidebar styles */
-.bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
-  font-size: 1em;
+a,a:link,a:hover{
+  text-decoration: none;
+  color: var(--primary);
 }
-
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-  fill: #373a47;
-}
-
-/* Wrapper for item list */
-.bm-item-list {
-  color: #b8b7ad;
-  padding: 0.8em;
-}
-
-/* Individual item */
-.bm-item {
-  display: inline-block;
-  padding:0.8em;
-}
-
-/* Styling of overlay */
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
-body{
-  font-family: 'Raleway', sans-serif;
-}
-/*   @font-face {
-    font-family: "Computer Modern";
-    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
-    font-weight: bold;
-  }
-  @font-face {
-    font-family: "Computer Modern";
-    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
-    font-style: italic, oblique;
-  }
-  @font-face {
-    font-family: "Computer Modern";
-    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
-    font-weight: bold;
-    font-style: italic, oblique;
-  } */

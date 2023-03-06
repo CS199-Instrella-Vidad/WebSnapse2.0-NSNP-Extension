@@ -1,6 +1,6 @@
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useReducer, useState } from 'react';
-import { SynapseRulesValid } from "../../utils/helpers";
+import { SynapseRulesValid } from "../../../utils/helpers";
 
 const DeleteSynapseForm = ({ showDeleteSynapseModal, handleCloseDeleteSynapseModal, handleDeleteSynapse, handleError, setNeurons, isClickedSynapse,
     srcID, dstID}) => {

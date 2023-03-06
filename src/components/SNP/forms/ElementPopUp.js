@@ -1,6 +1,6 @@
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useEffect, useReducer, useState } from 'react';
-import { allRulesValid } from "../../utils/helpers";
+import { allRulesValid } from "../../../utils/helpers";
 
 const ElementPopUp = ({ showElementPopup, handleCloseElementPopup, handleError, nodeID, nodeType, nodeSRules, nodeFRules, nodeSpikes, nodeBitstring}) => {
     const [rules, setRules] = useState('');

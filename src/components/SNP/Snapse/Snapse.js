@@ -4,8 +4,8 @@ import stylesheet from '../stylesheet'
 import { Button, Container } from 'react-bootstrap';
 import useAnimateEdges from './useAnimateEdges';
 import { useEffect, useMemo } from 'react';
-import { convertElements } from '../../utils/helpers';
-import { canUseRule, parseRule } from '../../utils/automata';
+import { convertElements } from '../../../utils/helpers';
+import { canUseRule, parseRule } from '../../../utils/automata';
 import { AlignCenter, Trash, Eye, PencilSquare, XCircle} from 'react-bootstrap-icons';
 import "./popper.css";
 import Slider from '@mui/material/Slider';

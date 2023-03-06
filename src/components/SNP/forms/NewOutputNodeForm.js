@@ -1,6 +1,6 @@
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useReducer, useState } from 'react';
-import { allRulesValid } from "../../utils/helpers";
+import { allRulesValid } from "../../../utils/helpers";
 import shortid from "shortid";
 
 const formReducer = (state, event) => {
@@ -17,9 +17,9 @@ const formReducer = (state, event) => {
 
 const initialFormState = {id:""}; 
 
-const NewInputNodeForm = ({ showNewInputModal, handleCloseNewInputModal, handleNewInput, handleError }) => {
+const NewOutputNodeForm = ({ showNewOutputModal, handleCloseNewOutputModal, handleNewOutput, handleError }) => {
   const handleClose = () => {
-    handleCloseNewInputModal();
+    handleCloseNewOutputModal();
   };
   const [formData, setFormData] = useReducer(formReducer, initialFormState);
   const [submitting, setSubmitting] = useState(false);
@@ -43,38 +43,27 @@ const NewInputNodeForm = ({ showNewInputModal, handleCloseNewInputModal, handleN
           reset: true
         })
       }, 3000);
-      const newInput = {
+      const newOutput = {
         id: newId,
         position: { x: 300, y: 300 },
-        isInput: true,
-        isOutput: false,
+        isOutput: true,
         spikes: 0,
-        delay: 0,
-        out: [],
-        bitstring: formData.bitstring,
-        outWeights: {}
+        bitstring: ' '
       }
-      handleNewInput(newInput);
+      handleNewOutput(newOutput);
   }
 
   return (
-    <Modal show={showNewInputModal} onHide={handleClose}>
+    <Modal show={showNewOutputModal} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Create New Node</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
         <Form.Group>
-            <Form.Label>Input Node Name</Form.Label>
+            <Form.Label>Output Node Name</Form.Label>
             <Form.Control  required name="id" type="text" placeholder="n0" value={formData.id} onChange={handleChange} />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label> Bitstring/Spike Train</Form.Label>
-          <Form.Control  required name="bitstring" type="text" placeholder="1,0,1" value={formData.bitstring} onChange={handleChange} />
-          <Form.Text className="text-muted">
-              Enter spike train. Separate spikes with <b>commas</b> with <b>NO space in between</b> (e. g. <b>1,0,1,1</b>).v
-          </Form.Text>
-        </Form.Group>
+          </Form.Group>
           <Button variant="secondary" onClick={handleClose}>
             Close
             </Button> {' '}
@@ -86,4 +75,4 @@ const NewInputNodeForm = ({ showNewInputModal, handleCloseNewInputModal, handleN
     </Modal>
   )
 }
-export default NewInputNodeForm;
+export default NewOutputNodeForm;
