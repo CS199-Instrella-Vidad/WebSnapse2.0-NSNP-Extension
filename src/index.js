@@ -7,7 +7,7 @@ import cytoscape from 'cytoscape';
 import popper from 'cytoscape-popper';
 import edgehandles from 'cytoscape-edgehandles';
 import gridGuide from 'cytoscape-grid-guide';
-
+import './fonts/Peace Sans.otf';
 cytoscape.use(edgehandles)
 cytoscape.use(gridGuide)
 cytoscape.use(popper)
