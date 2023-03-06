@@ -14,7 +14,7 @@
   display:contents;
 }
 .greet{
-  height:25vh;
+  height:30vh;
   padding:1% 5% 5% 5%;
   font-size: larger;
 }
@@ -23,7 +23,7 @@
   display:flex;
   padding:0 30% 0 30%;
   margin:0;
-  height: 60vh;
+  height: 65vh;
 }
 .divide{
   width:50%;
