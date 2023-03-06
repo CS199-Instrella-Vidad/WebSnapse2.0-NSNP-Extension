@@ -29,3 +29,9 @@ body,
 #root {
   display: flex;
 }
+@font-face {
+  font-family: "PeaceSans";
+  src: local("PeaceSans"),
+   url('./fonts/Peace Sans.otf') format("opentype");
+  font-weight: normal;
+  }

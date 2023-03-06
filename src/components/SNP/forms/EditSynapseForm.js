@@ -1,6 +1,6 @@
 import { Button, Form, Modal } from "react-bootstrap";
 import { useEffect, useReducer, useState, Text } from "react";
-import { allRulesValid } from "../../utils/helpers";
+import { allRulesValid } from "../../../utils/helpers";
 import { setUseProxies } from "immer";
 
 const EditSynapseForm = ({
@@ -72,7 +72,7 @@ const EditSynapseForm = ({
           <Form onSubmit={handleSubmit} data-testid="edit-node-form">
             <Form.Group>
               <Form.Label>
-                Selected Synapse: {srcID}->{dstID}
+                Selected Synapse: {srcID}-&gt;{dstID}
               </Form.Label>
             </Form.Group>
             <Form.Group>

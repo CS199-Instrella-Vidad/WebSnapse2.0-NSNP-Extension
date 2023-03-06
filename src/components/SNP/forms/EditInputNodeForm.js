@@ -1,6 +1,6 @@
 import { Button, Form, Modal } from "react-bootstrap";
 import { useEffect, useReducer, useState, Text } from "react";
-import { allRulesValid } from "../../utils/helpers";
+import { allRulesValid } from "../../../utils/helpers";
 import { setUseProxies } from "immer";
 
 const EditInputNodeForm = ({

@@ -1,14 +1,18 @@
-import "./scss/custom.scss";
-import "./App.css";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import SNP from "./pages/SNP/SNP";
-
+import LandingPage from "./pages/Landing/LandingPage.js";
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/">
+        <Route path="/websnapse_extended/SNP">
           <SNP />
+        </Route>
+        <Route path="/websnapse_extended/NSNP">
+          <SNP />
+        </Route>
+        <Route path="/">
+          <LandingPage />
         </Route>
       </Switch>
     </Router>

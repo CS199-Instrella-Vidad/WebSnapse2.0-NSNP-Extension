@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import { QuestionCircle } from "react-bootstrap-icons";
 import { useReducer, useState } from "react";
-import { allRulesValid } from "../../utils/helpers";
+import { allRulesValid } from "../../../utils/helpers";
 import shortid from "shortid";
 
 const renderTooltip = (props) => (

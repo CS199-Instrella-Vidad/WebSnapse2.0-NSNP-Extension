@@ -1,6 +1,6 @@
 import { Button, Form, Modal } from "react-bootstrap";
 import { useReducer, useState } from "react";
-import { allRulesValid } from "../../utils/helpers";
+import { allRulesValid } from "../../../utils/helpers";
 import shortid from "shortid";
 
 const formReducer = (state, event) => {
@@ -17,15 +17,19 @@ const formReducer = (state, event) => {
 
 const initialFormState = { id: "" };
 
-const NewInputNodeForm = ({
-  showNewInputModal,
-  handleCloseNewInputModal,
-  handleNewInput,
+const AddSynapseWeightForm = ({
+  showAddWeightModal,
+  handleCloseAddWeightModal,
+  handleAddWeight,
   handleError,
+  srce,
+  dest,
 }) => {
   const handleClose = () => {
-    handleCloseNewInputModal();
+    handleAddWeight(srce, dest, 1);
+    handleCloseAddWeightModal();
   };
+  const [neuronId, setNeuronId] = useState(""); //
   const [formData, setFormData] = useReducer(formReducer, initialFormState);
   const [submitting, setSubmitting] = useState(false);
   const handleChange = (event) => {
@@ -38,62 +42,47 @@ const NewInputNodeForm = ({
   };
   function handleSubmit(event) {
     event.preventDefault();
-    let newId = `${formData.id}-${shortid.generate()}`;
+    const weight = parseInt(formData.weight);
+    console.log("SOURCE", srce);
+    console.log("DEST", dest);
+    console.log("weight", weight);
     handleClose();
+    // let newId = `${formData.id}-${shortid.generate()}`;
+    //   handleClose();
     setSubmitting(true);
-
     setTimeout(() => {
       setSubmitting(false);
-      setFormData({
-        reset: true,
-      });
     }, 3000);
-    const newInput = {
-      id: newId,
-      position: { x: 300, y: 300 },
-      isInput: true,
-      isOutput: false,
-      spikes: 0,
-      delay: 0,
-      out: [],
-      bitstring: formData.bitstring,
-      outWeights: {},
-    };
-    handleNewInput(newInput);
+    //   const newOutput = {
+    //     id: newId,
+    //     position: { x: 300, y: 300 },
+    //     isOutput: true,
+    //     spikes: 0,
+    //     bitstring: ' '
+    //   }
+    handleAddWeight(srce, dest, weight, 0);
   }
 
   return (
-    <Modal show={showNewInputModal} onHide={handleClose}>
+    <Modal show={showAddWeightModal} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Create New Node</Modal.Title>
+        <Modal.Title>Add Synapse Weight</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
-            <Form.Label>Input Node Name</Form.Label>
+            <Form.Label>
+              Weight of the Synapse between {srce} and {dest}:
+            </Form.Label>
             <Form.Control
               required
-              name="id"
-              type="text"
-              placeholder="n0"
-              value={formData.id}
+              name="weight"
+              type="number"
+              placeholder={1}
+              min={1}
+              value={formData.weight}
               onChange={handleChange}
             />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label> Bitstring/Spike Train</Form.Label>
-            <Form.Control
-              required
-              name="bitstring"
-              type="text"
-              placeholder="1,0,1"
-              value={formData.bitstring}
-              onChange={handleChange}
-            />
-            <Form.Text className="text-muted">
-              Enter spike train. Separate spikes with <b>commas</b> with{" "}
-              <b>NO space in between</b> (e. g. <b>1,0,1,1</b>).v
-            </Form.Text>
           </Form.Group>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -106,4 +95,4 @@ const NewInputNodeForm = ({
     </Modal>
   );
 };
-export default NewInputNodeForm;
+export default AddSynapseWeightForm;
