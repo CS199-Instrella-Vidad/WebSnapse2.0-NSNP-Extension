@@ -7,6 +7,7 @@
   vertical-align:middle;
   margin: auto;
   color:var(--primary);
+  background-color: #f3efff;
 }
 #root{
   width:100%;
