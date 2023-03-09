@@ -685,7 +685,7 @@ function SNP() {
         restartTutorial={restartTutorial}
         handleFalseRestartTutorial={handleFalseRestartTutorial}
       />
-      <Container>
+      
         {error && <Alert variant="danger">{error}</Alert>}
 
         {/* Hamburger Side Menu */}
@@ -705,6 +705,7 @@ function SNP() {
           handleTrueRestartTutorial={handleTrueRestartTutorial}
         />
         {/* Main App Header */}
+        <Container>
         <MainHeader
           setMode={setMode}
           mode={mode}

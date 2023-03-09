@@ -12,7 +12,8 @@ import {
 import { Save2, ClockHistory } from "react-bootstrap-icons";
 import convert from "xml-js";
 import { saveAs } from "file-saver";
-
+import { Link } from "react-router-dom";
+import './Menu.css';
 var options = {
   compact: true,
   ignoreComment: true,
@@ -183,6 +184,13 @@ function Menu(props) {
         >
           Restart Tutorial
         </Button>
+      </div>
+      <div>
+        <Link to ='/'>
+        <Button>
+          Return to Main Menu
+        </Button>
+        </Link>
       </div>
       <div>
         <Form>
