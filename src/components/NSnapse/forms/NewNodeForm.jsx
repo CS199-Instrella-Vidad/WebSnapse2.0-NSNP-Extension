@@ -132,7 +132,7 @@ const NewNodeForm=({handleCloseModal, props=[]})=> {
         <h4>Variables</h4>
         <div className="sliders">
           <label>Number of Variables:</label>
-          <Slider track="normal"color='secondary' min={1} defaultValue={1} aria-label="Default" valueLabelDisplay="on" 
+          <Slider track="normal"color='secondary' min={1} max={30}vdefaultValue={1} aria-label="Default" valueLabelDisplay="on" 
           onChangeCommitted={(e,v) => {
               // Set the number of variables to the value of the input
              setNumVars(parseInt(v));
@@ -162,7 +162,7 @@ const NewNodeForm=({handleCloseModal, props=[]})=> {
         <div className="sliders">
           <label>Number of Functions</label>
           
-        <Slider color='secondary' min={1} defaultValue={1} aria-label="Default" valueLabelDisplay="on" 
+          <Slider color='secondary' min={1} max={30} defaultValue={1} aria-label="Default" valueLabelDisplay="on" 
           onChangeCommitted={(e,v) => {
               // Set the number of variables to the value of the input
               setNumFuncs(parseInt(v));
@@ -202,8 +202,7 @@ const NewNodeForm=({handleCloseModal, props=[]})=> {
           </div>
         </div>
       </div>
-
-      <div>
+      <div className="section">
         <h4>Connections</h4>
         <div>
           <label>Outgoing Connections</label>

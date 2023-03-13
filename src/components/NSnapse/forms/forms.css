@@ -26,7 +26,6 @@ div.modal-content {
     display: grid;
     grid-template-columns:auto auto auto auto;
     gap: 2%;
-    height: 28vh;
     max-height: 28vh;
     overflow-y: auto;
 }
@@ -53,11 +52,12 @@ th,td{
 }
 /* for sections breaks */
 .section{
-    border-bottom: 2px solid darkslategray;
+    border-bottom: 1px solid darkslategray;
+    padding-bottom: 1vh;
 }
 .fxn{
     overflow: auto;
-    height: 28vh;
+    max-height: 28vh;
 }
 .sticktop{
     position: sticky;
