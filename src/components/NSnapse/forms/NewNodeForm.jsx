@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import Select from "react-select";
 import { Slider } from "@mui/material";
 import './forms.css';
-import { Modal,Button, ModalBody } from "react-bootstrap";
+import { Modal,Button, ModalBody, ModalFooter } from "react-bootstrap";
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
-function NewNodeForm(props) {
+const NewNodeForm=({handleCloseModal, props=[]})=> {
   const [numVars, setNumVars] = useState(1);
   const [numFuncs, setNumFuncs] = useState(1);
   const [nodeOptions, setNodeOptions] = useState([]);
@@ -13,25 +13,49 @@ function NewNodeForm(props) {
   const [inputFuncs, setInputFuncs] = useState([]);
   const [inputSynOut, setInputSynOut] = useState([]);
   const [inputSynIn, setInputSynIn] = useState([]);
-
+  
   //const neuronNumber = props.L[0].length + 1;
 
   //for modals
   const [showModal, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    handleCloseModal();
+    setShow(false);};
   const handleShow = () => {setShow(true);setNumVars(1);
     setNumFuncs(1);};
+
+  //for button
+  let disabledbutton=true;
+  const [isdisabled, setAble]=useState(true);
+  function checkEmpty(){
+    const tb=document.getElementsByClassName("inputs");
+    let empty=false;
+    for(let i=0;i<tb.length;i++){
+      if (tb.item(i).value==''){
+        empty=true;
+        break;
+      }
+    }
+    if (empty==true){
+      document.getElementById("submitbutton").disabled=true;
+      setAble(true);
+    }
+    else{
+      document.getElementById("submitbutton").disabled=false;
+      setAble(false);
+    }
+  }
   function addNewNeuron() {
     // Add new neuron to the system
-
-    
-
+    console.log("adding Neuron");
     setNumVars(1);
     setNumFuncs(1);
     setInputVars([]);
     setInputFuncs([]);
     setInputSynOut([]);
     setInputSynIn([]);
+    handleClose();
+    console.log("added Neuron");
   }
 
   function handleAddVars(i, value) {
@@ -96,24 +120,23 @@ function NewNodeForm(props) {
   //   }
   //   setNodeOptions(newOptions);
   // }, []);
-
+  
   return (
-    <div>
-       <Button variant="primary" onClick={handleShow}>
-          Launch demo modal
-        </Button>
-      <Modal size='xl' backdrop='static' dialogclassName='modifiedModal'show={showModal} onHide={handleClose}>
-      <ModalHeader closeButton>Create New Neuron</ModalHeader>
-      <ModalBody>
-      <div>
-        <h2>Variables</h2>
+      <><Button variant="c5" onClick={handleShow}>
+      New Node
+    </Button>
+      <Modal dialogclassName='modalcustom' keyboard={false} size='xl' backdrop='static' show={showModal} onHide={handleClose}>
+      <ModalHeader closeButton className="sticktop"><h1>Create New Neuron</h1></ModalHeader>
+      <ModalBody className="bodymodal">
+      <div className='section'>
+        <h4>Variables</h4>
         <div className="sliders">
           <label>Number of Variables:</label>
           <Slider track="normal"color='secondary' min={1} defaultValue={1} aria-label="Default" valueLabelDisplay="on" 
           onChangeCommitted={(e,v) => {
               // Set the number of variables to the value of the input
-              console.log(v);
-              setNumVars(parseInt(v));
+             setNumVars(parseInt(v));
+              checkEmpty();
             }}/>
         </div>
         <div className="vargrid">
@@ -122,9 +145,11 @@ function NewNodeForm(props) {
               <div>
                 <label>Variable {i + 1}</label><br/>
                 <input
+                  className="inputs"
                   type="number"
                   onChange={(e) => {
                     handleAddVars(i, parseInt(e.target.value));
+                    checkEmpty();
                   }}
                 />
               </div>
@@ -132,24 +157,22 @@ function NewNodeForm(props) {
           })}
         </div>
       </div>
-      <div>
-        <h2>Functions</h2>
+      <div className='section'>
+        <h4>Functions</h4>
         <div className="sliders">
           <label>Number of Functions</label>
           
         <Slider color='secondary' min={1} defaultValue={1} aria-label="Default" valueLabelDisplay="on" 
           onChangeCommitted={(e,v) => {
               // Set the number of variables to the value of the input
-              console.log(v);
               setNumFuncs(parseInt(v));
+              checkEmpty();
             }}/>
         </div>
         <div>
-          <div>
+          <div className='fxn'>
             {/* // Add a function selector based on the number of variables the neuron has */}
-
-            <table>
-              
+            <table > 
               <tbody>
                 {Array.from(Array(numFuncs).keys()).map((i) => {
                   return (
@@ -162,8 +185,10 @@ function NewNodeForm(props) {
                           <td>
                             <input
                               type="number"
+                              className="inputs"
                               onChange={(e) => {
                                 handleAddFuncs(i, j, parseInt(e.target.value));
+                                checkEmpty();
                               }}
                             />
                           </td>
@@ -179,7 +204,7 @@ function NewNodeForm(props) {
       </div>
 
       <div>
-        <h2>Connections</h2>
+        <h4>Connections</h4>
         <div>
           <label>Outgoing Connections</label>
 
@@ -202,10 +227,11 @@ function NewNodeForm(props) {
           />
         </div>
       </div>
-      <button onClick={addNewNeuron}>Add Neuron</button>
+      
       </ModalBody>
+      <ModalFooter><Button disabled={isdisabled} onClick={addNewNeuron} id='submitbutton' variant='c5' >Add Neuron</Button></ModalFooter>
       </Modal>
-    </div>
+      </>
   );
 }
 

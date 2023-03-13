@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import SNP from "./pages/SNP/SNP";
 import LandingPage from "./pages/Landing/LandingPage.js";
-import NSNP from "./components/NSnapse/forms/NewNodeForm.jsx";
+import NSNP from "./pages/NSNP/NSNP";
 function App() {
   return (
     <Router>
