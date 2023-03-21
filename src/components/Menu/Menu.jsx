@@ -12,7 +12,8 @@ import {
 import { Save2, ClockHistory } from "react-bootstrap-icons";
 import convert from "xml-js";
 import { saveAs } from "file-saver";
-
+import { Link } from "react-router-dom";
+import './Menu.css';
 var options = {
   compact: true,
   ignoreComment: true,
@@ -121,7 +122,8 @@ function Menu(props) {
       disableOverlayClick
       noOverlay
     >
-      <Form>
+      <center>
+      <Form className="menuform">
         <Form.File
           id="custom-file"
           label={fileName ? fileName : "Load file..."}
@@ -131,24 +133,24 @@ function Menu(props) {
           }}
         />
       </Form>
-      <div>
-        <Button
+      <div className="btncontainer">
+        <Link to ='#'
           id="save-btn"
           variant="primary"
           disabled={props.time > 0 ? true : false}
           onClick={handleSave}
         >
-          <Save2 /> Save
-        </Button>
+          <div className="btnMode"><Save2 /> Save</div>
+        </Link>
       </div>
-      <div>
-        <Button
+      <div className="btncontainer">
+        <Link to ='#'
           id="choice-history-btn"
           variant="primary"
           onClick={props.handleShowChoiceHistoryModal}
         >
-          <ClockHistory /> Choice History
-        </Button>
+          <div className="btnMode"><ClockHistory /> Choice History</div>
+        </Link>
       </div>
       <div>
         <DropdownButton id="file-dropdown" title="Download samples">
@@ -175,14 +177,21 @@ function Menu(props) {
           </Dropdown.Item>
         </DropdownButton>
       </div>
-      <div>
-        <Button
+      <div className="btncontainer">
+        <Link to ='#'
           id="restart-tour"
           variant="primary"
           onClick={props.handleTrueRestartTutorial}
         >
-          Restart Tutorial
-        </Button>
+          <div className='btnMode'>Restart Tutorial</div>
+        </Link>
+      </div>
+      <div className="btncontainer">
+        <Link to ='/'>
+          <div className="btnMode">
+          Return to Main Menu
+          </div>
+        </Link>
       </div>
       <div>
         <Form>
@@ -196,6 +205,7 @@ function Menu(props) {
           />
         </Form>
       </div>
+      </center>
     </BMenu>
   );
 }

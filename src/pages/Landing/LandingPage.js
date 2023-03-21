@@ -6,7 +6,7 @@ function LandingPage() {
   return (
     <div className="welcome">
       <div className="greet">
-        <h1>Welcome to WebSnapse 2.0</h1>
+        <h1>Welcome to WebSnapse 2.1</h1>
         <br />
         <p>a visual simulator for Spiking Neural Networks:</p>
         <p>Please Hover on a side for specifications</p>
