@@ -13,7 +13,7 @@ import { Save2, ClockHistory } from "react-bootstrap-icons";
 import convert from "xml-js";
 import { saveAs } from "file-saver";
 import { Link } from "react-router-dom";
-import './Menu.css';
+import "./Menu.css";
 var options = {
   compact: true,
   ignoreComment: true,
@@ -123,88 +123,93 @@ function Menu(props) {
       noOverlay
     >
       <center>
-      <Form className="menuform">
-        <Form.File
-          id="custom-file"
-          label={fileName ? fileName : "Load file..."}
-          custom
-          onChange={(e) => {
-            handleLoad(e.target);
-          }}
-        />
-      </Form>
-      <div className="btncontainer">
-        <Link to ='#'
-          id="save-btn"
-          variant="primary"
-          disabled={props.time > 0 ? true : false}
-          onClick={handleSave}
-        >
-          <div className="btnMode"><Save2 /> Save</div>
-        </Link>
-      </div>
-      <div className="btncontainer">
-        <Link to ='#'
-          id="choice-history-btn"
-          variant="primary"
-          onClick={props.handleShowChoiceHistoryModal}
-        >
-          <div className="btnMode"><ClockHistory /> Choice History</div>
-        </Link>
-      </div>
-      <div>
-        <DropdownButton id="file-dropdown" title="Download samples">
-          <Dropdown.Item href="./samples/ex1 - 3k+3 spiker.xmp" download>
-            Ex1 - 3k+3 Spiker
-          </Dropdown.Item>
-          <Dropdown.Item href="./samples/ex2 - bitadder.xmp" download>
-            Ex2 - Bitadder
-          </Dropdown.Item>
-          <Dropdown.Item
-            href="./samples/ex3 - increasing comparator.xmp"
-            download
-          >
-            Ex3 - Increasing Comparator
-          </Dropdown.Item>
-          <Dropdown.Item href="./samples/ex4 - naturally even.xmp" download>
-            Ex4 - Naturally Even
-          </Dropdown.Item>
-          <Dropdown.Item
-            href="./samples/ex5 - naturally greater one.xmp"
-            download
-          >
-            Ex5 - Naturally Greater Than One
-          </Dropdown.Item>
-        </DropdownButton>
-      </div>
-      <div className="btncontainer">
-        <Link to ='#'
-          id="restart-tour"
-          variant="primary"
-          onClick={props.handleTrueRestartTutorial}
-        >
-          <div className='btnMode'>Restart Tutorial</div>
-        </Link>
-      </div>
-      <div className="btncontainer">
-        <Link to ='/'>
-          <div className="btnMode">
-          Return to Main Menu
-          </div>
-        </Link>
-      </div>
-      <div>
-        <Form>
-          <Form.Check
-            type="checkbox"
-            label="Display details when hovering"
-            defaultChecked={props.isHover}
-            onChange={() => {
-              props.isHover = !props.isHover;
+        <Form className="menuform">
+          <Form.File
+            id="custom-file"
+            label={fileName ? fileName : "Load file..."}
+            custom
+            onChange={(e) => {
+              handleLoad(e.target);
             }}
           />
         </Form>
-      </div>
+        <div className="btncontainer">
+          <Link
+            to="#"
+            id="save-btn"
+            variant="primary"
+            disabled={props.time > 0 ? true : false}
+            onClick={handleSave}
+          >
+            <div className="btnMode">
+              <Save2 /> Save
+            </div>
+          </Link>
+        </div>
+        <div className="btncontainer">
+          <Link
+            to="#"
+            id="choice-history-btn"
+            variant="primary"
+            onClick={props.handleShowChoiceHistoryModal}
+          >
+            <div className="btnMode">
+              <ClockHistory /> Choice History
+            </div>
+          </Link>
+        </div>
+        <div>
+          <DropdownButton id="file-dropdown" title="Download samples">
+            <Dropdown.Item href="./samples/ex1 - 3k+3 spiker.xmp" download>
+              Ex1 - 3k+3 Spiker
+            </Dropdown.Item>
+            <Dropdown.Item href="./samples/ex2 - bitadder.xmp" download>
+              Ex2 - Bitadder
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="./samples/ex3 - increasing comparator.xmp"
+              download
+            >
+              Ex3 - Increasing Comparator
+            </Dropdown.Item>
+            <Dropdown.Item href="./samples/ex4 - naturally even.xmp" download>
+              Ex4 - Naturally Even
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="./samples/ex5 - naturally greater one.xmp"
+              download
+            >
+              Ex5 - Naturally Greater Than One
+            </Dropdown.Item>
+          </DropdownButton>
+        </div>
+        <div className="btncontainer">
+          <Link
+            to="#"
+            id="restart-tour"
+            variant="primary"
+            onClick={props.handleTrueRestartTutorial}
+          >
+            <div className="btnMode">Restart Tutorial</div>
+          </Link>
+        </div>
+        <a href="http://snapse.website">
+          <div className="btncontainer">
+            <div className="btnMode">Return to Main Menu</div>
+          </div>
+        </a>
+        <div>
+          <Form>
+            <Form.Check
+              type="checkbox"
+              label="Display details when hovering"
+              defaultChecked={props.isHover}
+              onChange={() => {
+                props.isHover = !props.isHover;
+              }}
+            />
+          </Form>
+        </div>
       </center>
     </BMenu>
   );

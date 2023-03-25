@@ -2,7 +2,7 @@
   "name": "thesis",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cs199-instrella-vidad.github.io/WebSnapse2.0-NSNP-Extension/",
+  "homepage": "https://snp.snapse.website/",
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
