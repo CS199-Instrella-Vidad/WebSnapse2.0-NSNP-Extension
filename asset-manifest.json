@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.dee82b54.chunk.css",
-    "main.js": "/static/js/main.25ba3a44.chunk.js",
-    "main.js.map": "/static/js/main.25ba3a44.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.ab75012f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.ab75012f.js.map",
-    "static/js/2.a37c37f3.chunk.js": "/static/js/2.a37c37f3.chunk.js",
-    "static/js/2.a37c37f3.chunk.js.map": "/static/js/2.a37c37f3.chunk.js.map",
-    "static/js/3.8a635b92.chunk.js": "/static/js/3.8a635b92.chunk.js",
-    "static/js/3.8a635b92.chunk.js.map": "/static/js/3.8a635b92.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.dee82b54.chunk.css.map": "/static/css/main.dee82b54.chunk.css.map",
-    "static/js/2.a37c37f3.chunk.js.LICENSE.txt": "/static/js/2.a37c37f3.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/static/media/Peace Sans.f59a8de8.otf",
-    "static/media/nsnp.e9c3d42a.png": "/static/media/nsnp.e9c3d42a.png",
-    "static/media/snp.e9efa255.png": "/static/media/snp.e9efa255.png"
+    "main.css": "/WebSnapse2.0-NSNP-Extension/static/css/main.107c30da.chunk.css",
+    "main.js": "/WebSnapse2.0-NSNP-Extension/static/js/main.25ba3a44.chunk.js",
+    "main.js.map": "/WebSnapse2.0-NSNP-Extension/static/js/main.25ba3a44.chunk.js.map",
+    "runtime-main.js": "/WebSnapse2.0-NSNP-Extension/static/js/runtime-main.c8f68f73.js",
+    "runtime-main.js.map": "/WebSnapse2.0-NSNP-Extension/static/js/runtime-main.c8f68f73.js.map",
+    "static/js/2.dd86e662.chunk.js": "/WebSnapse2.0-NSNP-Extension/static/js/2.dd86e662.chunk.js",
+    "static/js/2.dd86e662.chunk.js.map": "/WebSnapse2.0-NSNP-Extension/static/js/2.dd86e662.chunk.js.map",
+    "static/js/3.8a635b92.chunk.js": "/WebSnapse2.0-NSNP-Extension/static/js/3.8a635b92.chunk.js",
+    "static/js/3.8a635b92.chunk.js.map": "/WebSnapse2.0-NSNP-Extension/static/js/3.8a635b92.chunk.js.map",
+    "index.html": "/WebSnapse2.0-NSNP-Extension/index.html",
+    "static/css/main.107c30da.chunk.css.map": "/WebSnapse2.0-NSNP-Extension/static/css/main.107c30da.chunk.css.map",
+    "static/js/2.dd86e662.chunk.js.LICENSE.txt": "/WebSnapse2.0-NSNP-Extension/static/js/2.dd86e662.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/WebSnapse2.0-NSNP-Extension/static/media/Peace Sans.f59a8de8.otf",
+    "static/media/nsnp.e9c3d42a.png": "/WebSnapse2.0-NSNP-Extension/static/media/nsnp.e9c3d42a.png",
+    "static/media/snp.e9efa255.png": "/WebSnapse2.0-NSNP-Extension/static/media/snp.e9efa255.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.ab75012f.js",
-    "static/js/2.a37c37f3.chunk.js",
-    "static/css/main.dee82b54.chunk.css",
+    "static/js/runtime-main.c8f68f73.js",
+    "static/js/2.dd86e662.chunk.js",
+    "static/css/main.107c30da.chunk.css",
     "static/js/main.25ba3a44.chunk.js"
   ]
 }
